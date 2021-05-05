@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     console.log(this.pswd);
   }
 
-  login(){
+  login(a:any,p:any){
    
-    var acno = this.accno;
-    var pswd = this.pswd;
+    var acno = a.value;
+    var pswd = p.value;
 
     let dataset = this.accountDetails;
 

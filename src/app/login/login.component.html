@@ -11,17 +11,17 @@
     <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
         <tr>
             <td>
-                <input id="acno" type="text" class="form-control " (change)="changeAcc($event)" placeholder="Account number" [value]="account"></td>
+                <input id="acno" type="text" class="form-control " #accno placeholder="Account number" [value]="account"></td>
         </tr>
         <tr>
             <td>
-                <input id="pwd" type="password" class="form-control " (change)="changePswd($event)" placeholder="Password">
+                <input id="pwd" type="password" class="form-control " #pswd placeholder="Password">
             </td>
         </tr>
         <tr >
             <td class="p-4">
                 <input type="button" class="form-control btn btn-primary pb-4" style="font-size: 20px;font-weight: bold;"
-                    value="Log In" (click)="login()">
+                    value="Log In" (click)="login(accno,pswd)">
                 </td>
         </tr>
     </table>
