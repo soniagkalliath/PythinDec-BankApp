@@ -1,6 +1,6 @@
 Angular Features
 
-1. Component 
+1. Component (ng g c cName)
 
 2. Module 
 
@@ -15,5 +15,9 @@ Angular Features
             3.1..1.2 Property Binding [binding-target] = "binding-source"
 
         3.1.2 View to Component
+
+            3.1.2.1 Event Binding (event)="source-function call"
+
+            3.1.2.2 Event Binding using argument as $event (event)="source-function ($event)"
 
     3.2 Two Way Binding
