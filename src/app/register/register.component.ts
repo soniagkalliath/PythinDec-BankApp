@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -8,29 +9,47 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  uname=""
-  accno="Account Number"
-  pswd=""
+  
   aim = "Registration Page"
 
-  constructor(private dataService:DataService,private router:Router) { }
+  registerForm = this.fb.group({
+    uname:['',[Validators.required]],
+    accno:['',[Validators.required]],
+    pswd:['',[Validators.required]]
+  })
+
+  constructor(private dataService:DataService,private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
 
 
   register(){
+  var  uname=this.registerForm.value.uname
+ var  accno=this.registerForm.value.accno
+  var pswd=this.registerForm.value.pswd
 
-   const result = this.dataService.register(this.accno,this.pswd,this.uname)
 
-   if(result){
-    alert("registration successfull");
-    this.router.navigateByUrl("");
-
-   }
-else{
-  alert("Account already Exist!!!!! Please Log In")
+console.log(this.registerForm.get('uname')?.errors);
+if(this.registerForm.get('uname')?.errors){
+  alert("User name required")
 }
+
+if(this.registerForm.valid){
+  const result = this.dataService.register(accno,pswd,uname)
+
+  if(result){
+   alert("registration successfull");
+   this.router.navigateByUrl("");
+
+  }
+else{
+ alert("Account already Exist!!!!! Please Log In");
+}
+}
+   else{
+     alert ("Invalid Form");
+   }
     
   }
 

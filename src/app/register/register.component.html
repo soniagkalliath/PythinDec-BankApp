@@ -7,19 +7,25 @@
     <div class="row mt-3" >
         <div class="col-2"></div>
         <div class="col-8 d-flex justify-content-center" >
-<form action="" (ngSubmit)="register()">
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
     <table class="shadow mb-4 rounded " cellpadding="5" cellspacing="5" style="background-color: white;">
         <tr>
             <td>
-                <input id="acno" type="text" class="form-control" name="uname" [(ngModel)]="uname" placeholder="User Name" ></td>
+                <input id="uname" type="text" class="form-control" formControlName="uname" placeholder="User Name" ></td>
+    
+            </tr>
+            <tr>
+                           <div class="error">Name Is Invalid</div>
+                </tr>
+        <tr>
+            <td>
+                <input id="acno" type="text" class="form-control" formControlName="accno"  placeholder="Account number" ></td>
         </tr>
         <tr>
             <td>
-                <input id="acno" type="text" class="form-control" name="accno" [(ngModel)]="accno" placeholder="Account number" ></td>
-        </tr>
-        <tr>
-            <td>
-                <input id="pwd" type="password" class="form-control" name="pswd" [(ngModel)]="pswd" placeholder="Password">
+                <input id="pwd" type="password" class="form-control" formControlName="pswd"  placeholder="Password">
             </td>
         </tr>
        

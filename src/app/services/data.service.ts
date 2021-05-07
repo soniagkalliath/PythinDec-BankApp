@@ -33,8 +33,6 @@ export class DataService {
   }
 
 
-
-
   login(acno:any,pswd:any){
     let dataset = this.accountDetails;
 
@@ -56,5 +54,64 @@ export class DataService {
     }
   }
 
+  deposit(acno:any,pswd:any,amount:any){
+
+    var acno = acno;
+        var pswd = pswd;
+        var amt = parseInt(amount);
+
+        let dataset = this.accountDetails;
+
+        if (acno in dataset) {
+          if (pswd == dataset[acno]["pswd"]) {
+              
+            dataset[acno]["balance"]= dataset[acno]["balance"] + amt;
+           
+            return dataset[acno]["balance"];
+              }
+          else {
+           
+            alert("Invalid password")
+            return false;
+          }
+      }
+      else {
+        alert("Invalid credentials")
+        return false;
+      }
+   }
+
+   withdraw(acno:any,pswd:any,amount:any){
+
+    var acno = acno;
+        var pswd = pswd;
+        var amt = parseInt(amount);
+
+        let dataset = this.accountDetails;
+
+        if (acno in dataset) {
+          if (pswd == dataset[acno]["pswd"]) {
+            
+            if(amt>dataset[acno]["balance"]){
+              alert("Insufficeient Balance")
+            }
+          else{
+       dataset[acno]["balance"]= dataset[acno]["balance"] - amt;
+            
+      return dataset[acno]["balance"];
+              }
+            
+              }
+          else {
+           
+            alert("Invalid password")
+            return false;
+          }
+      }
+      else {
+        alert("Invalid credentials")
+        return false;
+      }
+   }
 
 }
